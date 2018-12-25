@@ -15,6 +15,7 @@ import java.security.cert.CertificateException;
 @Slf4j
 public class HttpUtil {
     private static OkHttpClient okHttpClient=new OkHttpClient();
+    public static final int HTTPSTATUS_SUCCESS=200;
 
     static {
         initOkHttpClient();
@@ -50,21 +51,16 @@ public class HttpUtil {
             builder.hostnameVerifier((s, sslSession) -> true);
             okHttpClient=builder.build();
         }catch (Exception e){
-            log.error("pass https fail！e=",e);
+            log.error("pass ssl fail！e=",e);
         }
 
     }
 
-    public static Response getReponse(Request request) throws IOException {
-        Response response = okHttpClient.newCall(request).execute();
-        return response;
-    }
-
-
-    public static String getWebContent(String url) throws IOException {
+    public static Response getReponse(String url,String charset) throws IOException {
         Request request = new Request.Builder().url(url).addHeader("User-Agent",CommonConstant.USER_AGENT).build();
-        Response response = getReponse(request);
-        return response.body().string();
+        Response response = null;
+        response = okHttpClient.newCall(request).execute();
+        return response;
     }
 
 
