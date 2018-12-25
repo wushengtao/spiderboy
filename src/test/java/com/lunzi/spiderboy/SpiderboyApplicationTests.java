@@ -14,9 +14,7 @@ public class SpiderboyApplicationTests {
 
     @Test
     public void contextLoads() throws IOException {
-        String url="https://www.xicidaili.com/nn/2";
-        String html=HttpUtil.getWebContent(url);
-        System.out.println(html);
+
     }
 
 }
