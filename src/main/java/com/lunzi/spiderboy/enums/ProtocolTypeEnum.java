@@ -6,8 +6,8 @@ import java.util.Objects;
  * Created by lunzi on 2018/12/27 3:34 PM
  */
 public enum ProtocolTypeEnum {
-    HTTPS(1,"https"),
-    HTTP(2,"http");
+    HTTPS(1,"HTTPS"),
+    HTTP(2,"HTTP");
     private Integer code;
     private String desc;
 

@@ -2,6 +2,7 @@ package com.lunzi.spiderboy.parse;
 
 
 import com.lunzi.spiderboy.bean.IpProxy;
+import com.lunzi.spiderboy.bean.XiciIpProxy;
 import com.lunzi.spiderboy.enums.AnonymousTypeEnum;
 import com.lunzi.spiderboy.enums.ProtocolTypeEnum;
 import com.lunzi.spiderboy.parse.Parse;
@@ -36,15 +37,16 @@ public class IpProxyHtmlParse implements Parse {
             Double speed=Double.valueOf(element.select("td:eq(6)").first().selectFirst("div").attr("title").replace("秒",""));
             Double connectTime=Double.valueOf(element.select("td:eq(7)").first().selectFirst("div").attr("title").replace("秒",""));
             String surviveTime=element.select("td:eq(8)").first().text();
-            IpProxy ipProxy=IpProxy.builder()
-                    .ip(ip)
-                    .port(port)
+            XiciIpProxy xiciIpProxy=XiciIpProxy.builder()
                     .anonymousType(anonymousType)
                     .protocolType(protocolType)
                     .speed(speed)
                     .connectTime(connectTime)
+                    .ip(ip)
+                    .port(port)
+                    .surviveTime(surviveTime)
                     .build();
-            System.out.println(ipProxy.toString());
+            System.out.println(xiciIpProxy.toString());
         });
         return null;
     }

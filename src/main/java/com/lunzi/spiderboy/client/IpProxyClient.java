@@ -23,7 +23,7 @@ public class IpProxyClient extends AbstractHttpClient {
      * 开始获取ip代理
      */
     public static void startGetIpProxy(){
-        //使用多线程抓取-4个
+        //使用多线程抓取-4个线程
         for(int pageIndex=1;pageIndex<=4;pageIndex++){
             EXECUTOR_SERVICE.execute(new IpProxyParseTask(pageIndex));
         }
