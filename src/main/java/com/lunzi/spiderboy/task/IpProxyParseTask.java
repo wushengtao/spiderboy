@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * ip代理解析任务
  * Created by lunzi on 2018/12/22 10:27 PM
  */
 public class IpProxyParseTask implements Runnable {
@@ -19,6 +20,7 @@ public class IpProxyParseTask implements Runnable {
     }
     @Override
     public void run() {
+        //构建需要解析的代理列表
         List<String> urlList=Lists.newLinkedList();
         for(int i=1;i<=4;i++){
             urlList.add(CommonConstant.XICIDAILI_NN+(pageIndex*i));
