@@ -79,8 +79,8 @@ public class HttpUtil {
         Headers headers = response.headers();
         Headers.Builder headerBuilder = headers.newBuilder();
         headerBuilder.removeAll("Content-Type");
-        String headCharset = StringUtils.isEmpty(charset) ? "" : ";charset" + charset;
-        headerBuilder.add(contentType + headCharset);
+        String headCharset = StringUtils.isEmpty(charset) ? "" : ";charset=" + charset;
+        headerBuilder.add("Content-Type",headCharset);
         headers = headerBuilder.build();
         //反射设置header
         setHeader(response, headers);
@@ -92,6 +92,7 @@ public class HttpUtil {
         Field field;
         try {
             field = responseClass.getDeclaredField("headers");
+            field.setAccessible(true);
             field.set(response,headers);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException("setHeader error!",e);

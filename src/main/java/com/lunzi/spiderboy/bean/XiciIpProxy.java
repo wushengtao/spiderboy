@@ -52,4 +52,17 @@ public class XiciIpProxy extends IpProxy{
         }
         return -1L;
     }
+
+    @Override
+    public String toString() {
+        return "XiciIpProxy{" +
+                "ip"+super.getIp()+
+                "port"+super.getPort()+
+                "anonymousType=" + anonymousType +
+                ", protocolType=" + protocolType +
+                ", speed=" + speed +
+                ", connectTime=" + connectTime +
+                ", surviveTime='" + surviveTime + '\'' +
+                '}';
+    }
 }
